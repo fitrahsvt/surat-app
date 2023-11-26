@@ -15,14 +15,18 @@ class SuratKeluar extends Model
         'perihal',
         'jenis_id',
         'ditujukan',
-        'deskripsi',
         'pengirim',
         'berkas',
-        'status'
+        'created_by'
     ];
 
     public function jenis_surat()
     {
         return $this->belongsTo(JenisSurat::class, 'jenis_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }

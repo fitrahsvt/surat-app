@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('pengirim');
             $table->string('berkas');
             $table->string('status');
+            $table->bigInteger('created_by');
             $table->timestamps();
         });
     }

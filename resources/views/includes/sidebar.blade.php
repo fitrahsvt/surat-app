@@ -7,7 +7,7 @@
                 Dashboard
             </a>
             <div class="sb-sidenav-menu-heading">Interface</div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+            {{-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Layouts
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -53,7 +53,7 @@
             <a class="nav-link" href="charts.html">
                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                 Charts
-            </a>
+            </a> --}}
             <a class="nav-link" href="{{route('suratm.index')}}">
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-inbox"></i></div>
                 Surat Masuk
@@ -61,6 +61,18 @@
             <a class="nav-link" href="{{route('suratk.index')}}">
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-paper-plane"></i></div>
                 Surat Keluar
+            </a>
+            <a class="nav-link" href="{{route('disposisi.index')}}">
+                <div class="sb-nav-link-icon"><i class="fa-solid fa-file-signature"></i></div>
+                Disposisi Surat
+            </a>
+            <a class="nav-link" href="{{route('jenis.index')}}">
+                <div class="sb-nav-link-icon"><i class="fa-solid fa-envelopes-bulk"></i></div>
+                Jenis Surat
+            </a>
+            <a class="nav-link" href="{{route('user.index')}}">
+                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                User
             </a>
         </div>
     </div>

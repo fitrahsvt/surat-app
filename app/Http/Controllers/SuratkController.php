@@ -39,8 +39,8 @@ class SuratkController extends Controller
             'tgl_surat' => $request->tgl_surat,
             'berkas' => $fileName,
             'jenis_id' => $request->jenis,
-            'status' => $request->status,
-            'deskripsi' => $request->deskripsi,
+            'created_by' => $request->user,
+
         ]);
 
         return redirect()->route('suratk.index');
@@ -74,8 +74,6 @@ class SuratkController extends Controller
                 'tgl_surat' => $request->tgl_surat,
                 'berkas' => $fileName,
                 'jenis_id' => $request->jenis,
-                'status' => $request->status,
-                'deskripsi' => $request->deskripsi,
             ]);
         }else{
             SuratKeluar::where('id', $id)->update([
@@ -85,8 +83,6 @@ class SuratkController extends Controller
                 'ditujukan' => $request->ditujukan,
                 'tgl_surat' => $request->tgl_surat,
                 'jenis_id' => $request->jenis,
-                'status' => $request->status,
-                'deskripsi' => $request->deskripsi,
             ]);
         }
         return redirect()->route('suratk.index');
@@ -111,5 +107,12 @@ class SuratkController extends Controller
         } else {
             return response()->json(['message' => 'File not found'], 404);
         }
+    }
+
+    public function show($id)
+    {
+        $suratk = SuratKeluar::where('id', $id)->with('jenis_surat', 'user')->first();
+
+        return view('suratk.show', compact('suratk'));
     }
 }

@@ -16,16 +16,19 @@ class SuratMasukFactory extends Factory
      */
     public function definition()
     {
+        $a = $this->faker->numberBetween(4, 10);
+        $b = $this->faker->numberBetween(1, 2);
         return [
             'no' => $this->faker->numberBetween(100, 999),
             'tgl_surat' => $this->faker->date(),
             'perihal' => $this->faker->sentence(mt_rand(1, 2)),
-            'jenis_id' => 1,
+            'jenis_id' => $b,
             'ditujukan' => $this->faker->sentence(mt_rand(1, 2)),
-            'deskripsi' => $this->faker->sentence(2),
+            'deskripsi' => '',
             'pengirim' => $this->faker->name(),
             'berkas' => '12345674.pdf',
-            'status' => 'Belum Disposisi',
+            'status' => 'Belum disposisi',
+            'created_by' => $a
         ];
     }
 }

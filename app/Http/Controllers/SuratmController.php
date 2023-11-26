@@ -41,6 +41,7 @@ class SuratmController extends Controller
             'jenis_id' => $request->jenis,
             'status' => $request->status,
             'deskripsi' => $request->deskripsi,
+            'created_by' => $request->user,
         ]);
 
         return redirect()->route('suratm.index');
@@ -112,4 +113,22 @@ class SuratmController extends Controller
             return response()->json(['message' => 'File not found'], 404);
         }
     }
+
+    public function show($id)
+    {
+        $suratm = SuratMasuk::where('id', $id)->with('jenis_surat', 'user')->first();
+
+        return view('suratm.show', compact('suratm'));
+    }
+
+    public function disposisi(Request $request, $id)
+    {
+        SuratMasuk::where('id', $request->id)->update([
+            'status' => 'Sudah disposisi',
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return redirect()->route('suratm.index');
+    }
+
 }

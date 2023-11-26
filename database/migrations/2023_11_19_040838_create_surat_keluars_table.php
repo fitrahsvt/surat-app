@@ -20,10 +20,9 @@ return new class extends Migration
             $table->string('perihal');
             $table->bigInteger('jenis_id');
             $table->string('ditujukan');
-            $table->longText('deskripsi');
             $table->string('pengirim');
             $table->string('berkas');
-            $table->string('status');
+            $table->bigInteger('created_by');
             $table->timestamps();
         });
     }

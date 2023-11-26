@@ -18,11 +18,17 @@ class SuratMasuk extends Model
         'deskripsi',
         'pengirim',
         'berkas',
-        'status'
+        'status',
+        'created_by'
     ];
 
     public function jenis_surat()
     {
         return $this->belongsTo(JenisSurat::class, 'jenis_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }

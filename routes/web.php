@@ -9,6 +9,7 @@ use App\Http\Controllers\JenisController;
 use App\Http\Controllers\SuratmController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DisposisiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,8 @@ Route::middleware('auth')->group(function(){
     Route::put('/suratm/{id}', [SuratmController::class, 'update'])->name('suratm.update');
     Route::delete('/suratm/{id}', [SuratmController::class, 'destroy'])->name('suratm.destroy');
     Route::get('/suratm/download/{filename}', [SuratmController::class, 'download'])->name('suratm.download');
+    Route::get('/suratm/{id}', [SuratmController::class, 'show'])->name('suratm.show');
+    Route::put('/suratm/disposisi/{id}', [SuratmController::class, 'disposisi'])->name('suratm.disposisi');
 
     //surat keluar
     Route::get('/suratk', [SuratkController::class, 'index'])->name('suratk.index');
@@ -55,5 +58,23 @@ Route::middleware('auth')->group(function(){
     Route::put('/suratk/{id}', [SuratkController::class, 'update'])->name('suratk.update');
     Route::delete('/suratk/{id}', [SuratkController::class, 'destroy'])->name('suratk.destroy');
     Route::get('/suratk/download/{filename}', [SuratkController::class, 'download'])->name('suratk.download');
+    Route::get('/suratk/{id}', [SuratkController::class, 'show'])->name('suratk.show');
+
+    //Disposisi Surat
+    Route::get('/disposisi', [DisposisiController::class, 'index'])->name('disposisi.index');
+    Route::get('/disposisi/create', [DisposisiController::class, 'create'])->name('disposisi.create');
+    Route::put('/disposisi/{id}', [DisposisiController::class, 'store'])->name('disposisi.store');
+
+    //Jenis Surat
+    Route::get('/jenis', [JenisController::class, 'index'])->name('jenis.index');
+    Route::post('/jenis', [JenisController::class, 'store'])->name('jenis.store');
+    Route::delete('/jenis/{id}', [JenisController::class, 'destroy'])->name('jenis.destroy');
+
+    //User
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::post('/user', [UserController::class, 'store'])->name('user.store');
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 });
 

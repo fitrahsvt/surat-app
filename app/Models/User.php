@@ -22,12 +22,21 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
-        'avatar',
     ];
 
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function surat_masuk()
+    {
+        return $this->hasMany(SuratMasuk::class, 'created_by');
+    }
+
+    public function surat_keluar()
+    {
+        return $this->hasMany(SuratKeluar::class, 'created_by');
     }
 
     /**
