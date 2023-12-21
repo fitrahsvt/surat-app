@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\kirimEmail;
 use Illuminate\Http\Request;
 use App\Models\SuratKeluar;
 use App\Models\JenisSurat;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -40,8 +42,9 @@ class SuratkController extends Controller
             'berkas' => $fileName,
             'jenis_id' => $request->jenis,
             'created_by' => $request->user,
-
         ]);
+
+        Mail::to($request->ditujukan)->send(new kirimEmail($suratkeluar));
 
         return redirect()->route('suratk.index');
     }
